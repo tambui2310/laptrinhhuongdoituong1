@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	    <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;">
+	  	<script type="text/javascript">
+	  		var dai = parseInt(prompt("Nhập chiều dài: "));
+	  		var rong = parseInt(prompt("Nhập chiều rộng: "));
+	  		var Rectangle = function (rong,dai) {
+	  			this.rong = rong;
+	  			this.dai = dai;
+		  		this.getDienTich = function() {
+		  			return dai * rong;
+		  		}
+		  		this.getChuVi = function() {
+		  			return (dai + rong) * 2;
+		  		}
+	  		};
+	  		function createRectangle() {
+	  		var ctx = document.getElementById("myCanvas").getContext("2d");
+	  		var rectangle = new Rectangle(rong,dai);
+	  		var dientich = rectangle.getDienTich();
+	  		var chuvi = rectangle.getChuVi();
+	  		ctx.fillStyle = "#ffff00";
+			ctx.fillRect(350,200,dai,rong);
+			alert("Diện tích là: " + dientich + "; Chu vi là: " + chuvi);
+			}
+			createRectangle();
+	  	</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css"></style>
+<body>
+	<div id>
+	<h4 id="dienthoai1"></h4>
+	<p id="outTT"></p>
+	<input type="text" name="" placeholder="Soạn tin nhắn" id="soantin" >
+	<input type="button" name="" value="Gửi" onclick="guiTin()"><br>
+	<input type="button" name="" value="Thư đã gửi" id="thudi" onclick="hopThuDi()">&emsp;
+	<input type="button" name="" value="Hộp thử đến" id="thuden" onclick="hopThuDen()"><br></br>
+	<input type="submit" name="" value="BatTatIphone" id="battatIP" onclick="batTatIphone(this.value);">
+	<p id="out"></p>
+	</div>
+	<br></br>
+	<br></br>
+	<h4 id="dienthoai2"></h4>
+	<p id="outTT1"></p>
+	<input type="text" name="" placeholder="Soạn tin nhắn" id="soantin1" >
+	<input type="button" name="" value="Gửi" onclick="guiTin1()"><br>
+	<input type="button" name="" value="Thư đã gửi" id="thudiip" onclick="hopThuDi1()">&emsp;
+	<input type="button" name="" value="Hộp thử đến" id="thudenip" onclick="hopThuDen1()"><br></br>
+	<input type="submit" name="" value="BatTatSamSung" id="battatSS" onclick="batTatSamSung(this.value);">
+	<p id="out1"></p>
+	<script type="text/javascript">
+		class Mobile{
+			constructor(type, pin, trangthai){
+				this.type = type;
+				this.pin = pin;
+				this.trangthai = trangthai;
+			}			
+			kiemtrabattat(){
+				if(this.trangthai){
+					this.trangthai = false ;
+				}
+				else this.trangthai = true ;
+
+			}
+			isStatus(){
+				if (this.trangthai) {
+					document.getElementById('outTT').innerHTML = "Đang online";
+				}
+				else document.getElementById('outTT').innerHTML	 = "Đang offline";
+			}
+			isStatus1(){
+				if (this.trangthai) {
+					document.getElementById('outTT1').innerHTML = "Đang online";
+				}
+				else document.getElementById('outTT1').innerHTML	 = "Đang offline";
+			}
+			sacPin(){
+				if (this.pin <= 90) {
+					do{
+						this.pin += 1;
+					}
+					while (this.pin < 100);
+				}
+				return this.pin;
+			}
+			haoPin(){
+				this.pin--;
+				return this.pin; 
+			}
+
+			}
+		var Iphone = new Mobile("Iphone",90,true);
+		Iphone.isStatus();
+		document.getElementById('dienthoai1').innerHTML = Iphone.type + "&emsp;" + Iphone.sacPin() + "%";
+		function batTatIphone(value) {
+			if (value === "BatTatIphone") {
+				Iphone.kiemtrabattat();
+			}
+			Iphone.isStatus();
+		}
+		var tin = [];
+		var den = [];
+		function guiTin() {
+			if(Iphone.trangthai){
+			var thu = document.getElementById('soantin').value;
+			document.getElementById("thudi").value = "Thư đã gửi " + "(" + tin.push(thu) +  ")";
+			document.getElementById("thudenip").value = "Hộp thư đến  " + "(" + den.push(thu) +  ")";
+			document.getElementById('dienthoai1').innerHTML = Iphone.type + "&emsp;" + Iphone.haoPin() + "%";
+			Iphone.sacPin();
+			}
+		}
+		function hopThuDi() {
+			document.getElementById('out').innerHTML = "Xem tin nhắn đi" + "<br>" + tin + "<br>" ;
+		}
+		var Samsung = new Mobile("Samsung", 90, true);
+		Samsung.isStatus1();
+		document.getElementById('dienthoai2').innerHTML = Samsung.type + "&emsp;" + Samsung.sacPin() + "%";
+		function batTatSamSung(value) {
+			if (value === "BatTatSamSung" ) {
+				Samsung.kiemtrabattat();
+			}
+			Samsung.isStatus1();
+		}
+		function hopThuDen() {
+			document.getElementById('out').innerHTML = "Hộp thư đến" + "<br" + tin;
+		}
+		var tin1 = [];
+		/*function guiTin1() {
+			var thu1 = document.getElementById('soantin1').value;
+			document.getElementById("thudiip").value = "Thư đã gửi " + "(" + tin.push(thu1) +  ")";
+			//document.getElementById("thudenip").value = "Hộp thư đến  " + "(" + den.push(thu1) +  ")";
+			document.getElementById('dienthoai1').innerHTML = Iphone.type + "&emsp;" + Iphone.haoPin() + "%";
+			Iphone.sacPin();	
+			}*/
+		function hopThuDi1() {
+			document.getElementById('out1').innerHTML = "Xem tin nhắn đi" + "<br>" + tin1 + "<br>" ;
+		}
+		function hopThuDen1() {
+			document.getElementById('out1').innerHTML ="Hộp thư đến " + "<br>" + tin;
+		}
+	</script>
+</body>
+</html>

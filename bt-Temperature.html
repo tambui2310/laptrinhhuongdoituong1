@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var doC = parseInt(prompt("Nhập độ C: "));
+		var Temperature = function (doC) {
+			this.doC = doC;
+			this.getDoF = function(){
+				if (doC >= -273) {
+				return (this.doC * 1.8) + 32 ;
+				} else return F = false;
+			}
+			this.getDoK = function () {
+				if (doC >= -273) {
+				return this.doC + 273.15;
+			} else return K = false;
+			}
+		};
+		var temp =  new Temperature(doC);
+		var doF = temp.getDoF();
+		var doK = temp.getDoK();
+		document.write("Độ F bằng: " + doF + "; Độ K bằng: " + doK);
+		
+	</script>
+
+</body>
+</html>
